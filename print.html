@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The agb book</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="hardware/hardware.html"><strong aria-hidden="true">2.</strong> The Game Boy Advance hardware</a></li><li class="chapter-item expanded "><a href="setup/getting_started.html"><strong aria-hidden="true">3.</strong> Running an example</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="setup/setup.html"><strong aria-hidden="true">3.1.</strong> Environment setup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="setup/linux.html"><strong aria-hidden="true">3.1.1.</strong> Linux setup</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.1.2.</strong> Windows setup</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.1.3.</strong> Mac OS setup</div></li></ol></li><li class="chapter-item expanded "><a href="setup/building.html"><strong aria-hidden="true">3.2.</strong> Building the game</a></li></ol></li><li class="chapter-item expanded "><a href="pong/01_introduction.html"><strong aria-hidden="true">4.</strong> Learn agb part I - pong</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="pong/02_the_gba_struct.html"><strong aria-hidden="true">4.1.</strong> The Gba struct</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The agb book</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p><strong>agb</strong> is a library for writing games for the Game Boy Advance (GBA) in rust.
+It is intended to make the process of producing games for the Game Boy Advance as easy as possible by giving you access to the hardware in an abstracted format, which allows you to take advantage of all that it has to offer, without needing to know the specifics of how it is implemented.</p>
+<h1 id="what-is-in-this-book"><a class="header" href="#what-is-in-this-book">What is in this book?</a></h1>
+<p>This book is intended as an introduction to what <strong>agb</strong> has to offer, and should set you up nicely to start writing games of your own.
+This book will not give a thorough overview of the specifics of the hardware implementation of the GBA unless it is needed as part of an explanation.
+An overview of the hardware can be found in chapter 2.</p>
+<h1 id="who-is-this-book-for"><a class="header" href="#who-is-this-book-for">Who is this book for?</a></h1>
+<p>This book is for:</p>
+<ul>
+<li><strong>People who want to make games for the GBA.</strong> First and foremost, games written using agb cannot run on any other platform except the GBA and emulators. If you don't want to write a game for the GBA, you should probably use a different library.</li>
+<li><strong>People who have experience in rust.</strong> Unless the rust specific syntax or semantics are important, we will not discuss details here and instead recommend reading the rust book before coming back.</li>
+<li><strong>People with experience in writing games.</strong> Game programming is hard, and harder still in rust on a GBA. We recommend writing a game for a more user friendly platform before coming back here.</li>
+</ul>
+<p>If you fit into all of those categories, welcome!
+It is super rewarding being able to play a game you made yourself on a piece of 20+ year old hardware.</p>
+<h1 id="helpful-links"><a class="header" href="#helpful-links">Helpful links</a></h1>
+<ul>
+<li><a href="https://github.com/agbrs/agb">agb's GitHub</a> all development happens here</li>
+<li><a href="https://crates.io/crates/agb">agb's crates.io page</a></li>
+<li><a href="https://docs.rs/agb">agb's documentation</a> which is useful if you need a quick reference</li>
+<li><a href="https://github.com/gbdev/awesome-gbadev">Awesome Game Boy Advance development</a> contains links to popular libraries, emulators and the super friendly gbadev discord</li>
+<li><a href="https://lostimmortal.itch.io/the-hat-chooses-the-wizard">Example game</a> written using agb as part of the 2021 GMTK game jam.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-game-boy-advance-hardware"><a class="header" href="#the-game-boy-advance-hardware">The Game Boy Advance hardware</a></h1>
+<p>The Game Boy Advance was released by Nintendo in Japan in March 2001 and in North America in the following June.
+It has a 2.9 inch screen with a 240x144 pixel resolution, and contains a 32-bit 16.8MHz ARM CPU.
+It was developed to be the successor to the Game Boy Color and internally codenamed the 'Advanced Game Boy' (agb) which is where this crate gets its name.</p>
+<h1 id="what-makes-the-gba-unique"><a class="header" href="#what-makes-the-gba-unique">What makes the GBA unique?</a></h1>
+<p>The Game Boy Advance is (fairly) unique amongst retro handheld consoles.
+It was developed at a time where processors weren't powerful enough to be able to push an entire screen of pixels to the screen every frame.
+Therefore, it has a special Pixel Processing Unit (PPU) which is sort of similar to a modern day graphics card, except it is very games focused.
+For example, the GBA has a concept of 'hardware sprites' and 'hardware backgrounds' which we'll go in to more detail in the next section.
+This hardware 2d capabilities gives the GBA the unique characteristics with the games developed for it.</p>
+<p>However, despite this, it is possible to write code for it using modern tools and programming languages thanks to the ARM CPU it contains.
+The CPU is modern enough to be supported by LLVM and rust to give a reasonably trouble free experience.</p>
+<p>So the GBA lets you take advantage of modern tooling while also giving you the ability to see what programming for retro consoles was like at the time!</p>
+<h1 id="capabilities-of-the-hardware"><a class="header" href="#capabilities-of-the-hardware">Capabilities of the hardware</a></h1>
+<p>The GBA is fundamentally a 2D system, and a lot of the hardware accelerated graphics is designed to support this.
+The relevant features for this book are:</p>
+<ul>
+<li>256 sprites which can be from 8x8 to 64x64 pixels in size</li>
+<li>4 background layers which are enabled / disabled depending on the graphics mode</li>
+<li>Background tiles, 8x8 pixel tiles are used in the background layers if they are in tile mode.</li>
+<li>8-bit sound. You have the ability to send 8-bit raw audio data to the speakers (optionally stereo).</li>
+</ul>
+<p>You can read more about the specifics of the GBA on <a href="https://rust-console.github.io/gbatek-gbaonly/">gbatek</a>.</p>
+<p>agb tries to abstract some of this away from you to give you less to remember and less that can go wrong.
+If you want to try playing around directly with the hardware, the best place to look is <a href="https://www.coranac.com/tonc/text/">tonc</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="running-an-example"><a class="header" href="#running-an-example">Running an example</a></h1>
+<p>In this section, we will get to the point where you can build and run the game built for the GMTK game jam using agb known as 'The Hat Chooses the Wizard'.
+This will prove that your development environment is ready for the future tutorials and later building.</p>
+<p>You can run the game using real hardware and a flash card.
+However, at this stage, it is much easier to play on an emulator.
+agb is guaranteed to work well using <a href="https://mgba.io/">mgba</a>, but other emulators will also work.</p>
+<p>Note that some emulators will require a special 'fixed' gba ROM file.
+See the later steps in this section for how to do this.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="environment-setup"><a class="header" href="#environment-setup">Environment setup</a></h1>
+<p>Environment setup will depend on the platform you are using.
+agb's requirements are <a href="https://www.rust-lang.org/">rust nightly</a> edition and the gnu binutils for <code>arm-none-eabi</code>.</p>
+<p>See the subpages here for platform specific setup guides.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="linux-setup"><a class="header" href="#linux-setup">Linux setup</a></h1>
+<p>This guide has been tested on Ubuntu, Arch Linux and Raspberry Pi OS running on a raspberry pi 4.</p>
+<h1 id="1-install-a-recent-version-of-rust"><a class="header" href="#1-install-a-recent-version-of-rust">1. Install a recent version of rust</a></h1>
+<p>agb unfortunately relies on a few nightly rust features, so you need to ensure you have that installed.
+Firstly, ensure that you have <strong>rustup</strong> installed which you can do by following the instructions on the <a href="https://www.rust-lang.org/tools/install">rust website</a></p>
+<p>You can update rustup with <code>rustup update</code> if you have already installed it.</p>
+<h1 id="2-arm-none-eabi"><a class="header" href="#2-arm-none-eabi">2. arm-none-eabi</a></h1>
+<p>We need this installed in order to be able to assemble the small amount of assembly in agb, and to do the final linking.</p>
+<ul>
+<li>On Debian and derivatives (like Ubuntu): <code>sudo apt install binutils-arm-non-eabi</code></li>
+<li>On Arch Linux and derivatives: <code>pacman -S arm-none-eabi-binutils</code></li>
+</ul>
+<h1 id="3-git"><a class="header" href="#3-git">3. git</a></h1>
+<p>The source code for the game is hosted on github, so you will need git installed.</p>
+<ul>
+<li>On Debian and derivatives (like Ubuntu): <code>sudo apt install git</code></li>
+<li>On Arch Linux and derivatives: <code>pacman -S git</code></li>
+</ul>
+<h1 id="4-gbafix"><a class="header" href="#4-gbafix">4. gbafix</a></h1>
+<p>In order to be able to play on real hardware or on some emulators, you may need to install 'gbafix'.
+The rust implementation can be installed very easily using <code>cargo install gbafix</code>.</p>
+<p>Make sure that the Cargo bin directory is in your <code>PATH</code> as we'll need to use it later.</p>
+<p>That is all you need to get started.
+You can now move on to 'building the game'.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="building-the-game"><a class="header" href="#building-the-game">Building the game</a></h1>
+<p>By the end of this section, you should be able to build and run an example game made using agb!
+<strong>This section is optional.</strong>
+If you just want to get straight into building your own games, you don't need to do this.
+However, we recommended doing this section to prove that your setup works.</p>
+<h1 id="1-get-the-source-code"><a class="header" href="#1-get-the-source-code">1. Get the source code</a></h1>
+<p>The source code can be fetched using <code>git clone https://github.com/agbrs/joinedtogether.git</code>.</p>
+<h1 id="2-build-the-game"><a class="header" href="#2-build-the-game">2. Build the game</a></h1>
+<p>Build a copy of the game using <code>cargo build --release</code>.
+This could take quite a while, but eventually you'll end up with a copy of the game in <code>target/thumbv4t-none-eabi/release/joinedtogether</code> or <code>target/thumbv4t-none-eabi/release/joinedtogether.elf</code> depending on platform.</p>
+<p>This can be run directly by some emulators, but we need to run an extra step in order to convert the elf file into a '.gba' file.</p>
+<pre><code class="language-sh">arm-none-eabi-objcopy -O binary target/thumbv4t-none-eabi/release/joinedtogether joinedtogether.gba
+gbafix joinedtogether.gba
+</code></pre>
+<p>or</p>
+<pre><code class="language-sh">arm-none-eabi-objcopy -O binary target/thumbv4t-none-eabi/release/joinedtogether.elf joinedtogether.gba
+gbafix joinedtogether.gba
+</code></pre>
+<p>And then load the resulting file in your emulator of choice.
+That's all there is to it!</p>
+<p>If you have <code>mgba-qt</code> in your path, then you can launch the game directly using <code>cargo run --release</code></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="learn-agb-part-i---pong"><a class="header" href="#learn-agb-part-i---pong">Learn agb part I - pong</a></h1>
+<p>In this section, we'll make a simple pong style game for the Game Boy Advance using <code>agb</code>.
+You will learn:</p>
+<ul>
+<li>How to use tiled graphics modes.</li>
+<li>How to import graphics using <code>agb</code>.</li>
+<li>What Game Boy Advance sprites are and how to put them on the screen.</li>
+<li>How to detect button input and react to it.</li>
+<li>How to add a static background.</li>
+<li>How to make a dynamic background for a score display.</li>
+<li>How to add music to your game.</li>
+<li>How to add sound effects to your game.</li>
+</ul>
+<p>With this knowledge, you'll be well equipped to start making your own games!</p>
+<h2 id="getting-started"><a class="header" href="#getting-started">Getting started</a></h2>
+<p>To start, create a new repository based on the <a href="https://github.com/agbrs/template">agb template</a>.
+We'll call this <code>pong</code>.</p>
+<p>Then replace the <code>name</code> field in <code>Cargo.toml</code> with <code>pong</code>, to end up with something similar to:</p>
+<pre><code class="language-toml">[package]
+name = &quot;pong&quot;
+version = &quot;0.1.0&quot;
+authors = [&quot;Your name here&quot;]
+edition = &quot;2018&quot;
+
+# ...
+</code></pre>
+<p>You are now ready to get started learning about how <code>agb</code> works.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-gba-struct"><a class="header" href="#the-gba-struct">The Gba struct</a></h1>
+<p>In this section, we'll cover the importance of the Gba struct and how it gets created for you.</p>
+<h1 id="the-importance-of-the-gba-struct"><a class="header" href="#the-importance-of-the-gba-struct">The importance of the Gba struct</a></h1>
+<p>Almost all interaction with the Game Boy Advance's hardware goes through the <a href="https://docs.rs/agb/latest/agb/struct.Gba.html">Gba singleton struct</a>.
+You should not create the Gba struct yourself, instead having it be passed into your main function.</p>
+<p>The Gba struct is used to take advantage of rust's borrow checker, and lean on it to ensure that access to the Game Boy Advance hardware is done 'sensibly'.
+You won't have to worry about 2 bits of your code modifying data in the wrong way!</p>
+<h1 id="how-all-agb-games-start"><a class="header" href="#how-all-agb-games-start">How all agb games start</a></h1>
+<p>Replace the content of the <code>main</code> function with the following:</p>
+<pre><code class="language-rust ignore"><span class="boring">#![no_std]
+</span><span class="boring">#![no_main]
+</span><span class="boring">#[agb::entry]
+</span><span class="boring">fn main(mut _gba: Gba) -&gt; ! {
+</span>loop {} // infinite loop for now
+<span class="boring">}
+</span></code></pre>
+<p>and ignore warnings for now.</p>
+<h1 id="running-your-pong-game"><a class="header" href="#running-your-pong-game">Running your pong game</a></h1>
+<p>Although there isn't much to see at the moment (just a black screen), you can start the game by using <code>cargo run</code> or whatever worked for you in the introduction.</p>
+<h1 id="what-we-did"><a class="header" href="#what-we-did">What we did</a></h1>
+<p>This was a very simple but incredibly important part of any game using <code>agb</code>.
+All interactions with the hardware are gated via the Gba struct, which you never create yourself.</p>
+<p>You are now ready to learn about display modes and how to start getting things onto the screen!</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>
