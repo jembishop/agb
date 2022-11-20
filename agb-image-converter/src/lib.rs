@@ -128,7 +128,7 @@ pub fn include_gfx(input: TokenStream) -> TokenStream {
     }
 
     let palette_code =
-        rust_generator::generate_palette_code(&optimisation_results, &config.crate_prefix());
+        rust_generator::generate_palette_code(&optimisation_results, &config.crate_prefix(), config.colour_mappings());
 
     let module = quote! {
         mod #module_name {

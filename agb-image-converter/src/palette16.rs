@@ -62,6 +62,10 @@ impl Palette16 {
         self.colours.iter()
     }
 
+    pub fn len(&self) -> usize {
+        self.colours.len()
+    }
+
     fn union_length(&self, other: &Palette16) -> usize {
         self.colours
             .iter()
