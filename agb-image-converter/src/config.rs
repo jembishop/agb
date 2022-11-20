@@ -1,6 +1,7 @@
 use serde::Deserialize;
 use std::collections::HashMap;
 use std::fs;
+use toml::value::Table;
 
 use crate::{Colour, Colours, TileSize};
 
@@ -24,6 +25,7 @@ pub(crate) trait Config {
     fn crate_prefix(&self) -> String;
     fn images(&self) -> HashMap<String, &dyn Image>;
     fn transparent_colour(&self) -> Option<Colour>;
+    fn colour_mappings(&self) -> HashMap<Colour, String>;
 }
 
 pub(crate) trait Image {
@@ -37,6 +39,7 @@ pub struct ConfigV1 {
     version: String,
     crate_prefix: Option<String>,
     transparent_colour: Option<String>,
+    colour_mappings: Option<Table>,
 
     image: HashMap<String, ImageV1>,
 }
@@ -68,6 +71,23 @@ impl Config for ConfigV1 {
             .values()
             .flat_map(|image| image.transparent_colour())
             .next()
+    }
+    fn colour_mappings(&self) -> HashMap<Colour, String> {
+        if let Some(mappings) = &self.colour_mappings {
+            mappings
+                .iter()
+                .map(|(key, value)| {
+                    let colour: Colour = value
+                        .as_str()
+                        .expect("Palette colour must be a string!")
+                        .parse()
+                        .expect("Invalid palette colour");
+                    (colour, key.clone())
+                })
+                .collect()
+        } else {
+            HashMap::new()
+        }
     }
 }
 
