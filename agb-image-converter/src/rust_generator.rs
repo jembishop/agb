@@ -79,7 +79,7 @@ pub(crate) fn generate_palette_code(
                 palette_mapping.get(colour).and_then(|name| {
                     found_colours.insert(name).then(|| {
                         let ident = format_ident!("{}", name.clone());
-                        quote!( const #ident: usize = #idx;)
+                        quote!(pub const #ident: usize = #idx;)
                     })
                 })
             });
