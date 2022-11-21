@@ -84,14 +84,12 @@ pub(crate) fn generate_palette_code(
                 })
             });
 
-    let t = quote! {
+    quote! {
         pub const PALETTES: &[#crate_prefix::display::palette16::Palette16] = &[#(#palettes),*];
         pub mod mapped_colours {
             #(#mapped_colours)*
         }
-    };
-    println!("{}", t.to_string());
-    t
+    }
 }
 
 pub(crate) fn generate_code(
